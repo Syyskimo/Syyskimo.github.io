@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+
+    <title>skm-cookie-consent : with css-variables</title>
+
+    <link rel='icon' type='image/png' href='/favicon.png'>
+    <link rel='stylesheet' href='/global.css'>
+    <link rel='stylesheet' href='/build/bundle.css'>
+
+    <script defer src='/build/bundle.js'></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<h1>Basic scenario of using skm-consent</h1>
+<p>skm-consent is a web-component for creating cookie-consents. It's done with Svelte.</p>
+<p>Please view-source to see how the story goes.</p>
+<ul>
+    <li><a href="index.html">Basic scenario</a></li>
+    <li><a href="index2.html">Css-variables</a></li>
+    <li><a href="index3.html">Local styles</a></li>
+    <li><a href="index4.html">All combined</a></li>
+    <li><a href="index5.html">Minimal scenario</a></li>
+</ul>
+
+<!-- the texttogglemore property is not set => the toggling is not enabled at all-->
+<skm-consent
+        debug="true"
+        consentcookie="skm-consent"
+        textrequired="Understood"
+>
+    <!-- the heading of the cookie consent. Remember to use some heading - like we use here h2 -->
+    <h2 slot="title">We use cookies!</h2>
+    <!-- short description. Ie. the short desc what shows all the time -->
+    <div slot="shortdesc">
+        See our <a href="#">terms and stuff</a>
+    </div>
+    <!-- the cookies, please add the skm-cookies over here.  -->
+    <div slot="cookies">
+        <!-- cookies have:
+            name: think it as a code, not shown name. This is what will be stored in cookie
+            title: the text shown to user
+            type: required|default|optional
+                required : a mandatory cookie, cannot be unchecked
+                default : may be unchecked, but is checked by default
+                optional : may be checked, but is unchecked by default
+         -->
+        <skm-cookie name="required" title="Basic cookies for making the site work (mandatory)" type="required"></skm-cookie>
+    </div>
+</skm-consent>
+</body>
+</html>
